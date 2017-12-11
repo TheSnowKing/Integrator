@@ -6,6 +6,7 @@
 #define SIMULATE_H
 
 #include <vector>
+#include <cmath>
 #include "Integral.h"
 #include "Derivative.h"
 #include "Particle.h"
@@ -14,6 +15,6 @@
 class Simulate
 {
 public:
-	static void run(ParticleList& list, double h, int N);
+	static void run(ParticleList& list, double h, int N, int mode);
 };
 #endif // SIMULATE_H

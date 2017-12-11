@@ -27,9 +27,9 @@ line=$(head -n 1 "$tmp")
 for ((i = 0; i < line; i++)) do
 
 	if [ $i -eq 0 ]; then
-		echo -e "set key off; set xrange[-3:3]; set yrange[-3:3]; plot '$tmp' every :::$i::$i using 1:2 pt 7 ps 2 lc rgb 'black'";
+		echo -e "set key off; set xrange[-12:12]; set yrange[-12:12]; set zrange[-12:12]; splot '$tmp' every :::$i::$i using 1:2:3 pt 7 ps 1 lc rgb 'black'";
 	else
-		echo -e "set key off; set xrange[-3:3]; set yrange[-3:3]; plot '$tmp' every :::$i::$i using 1:2 pt 7 ps 2 lc rgb 'black'";
+		echo -e "set key off; set xrange[-12:12]; set yrange[-12:12]; set zrange[-12:12]; splot '$tmp' every :::$i::$i using 1:2:3 pt 7 ps 1 lc rgb 'black'";
 	fi
 
 #	echo -e "set size square;\

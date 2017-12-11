@@ -2,7 +2,7 @@
 
 tmp=$(mktemp)
 
-if [ "$#" -eq 3 ]; then
+if [ "$#" -eq 4 ]; then
 	prog=$1
 	if [ ! -f "$prog" ]; then
 		echo -e "Error: Program '$prog' does not exist."
@@ -14,28 +14,9 @@ else
 	exit 1
 fi
 
-./$prog $2 $3 > $tmp
-#cat $tmp
 
-#set xrange[0:];\
-#set yrange[0:];\
-
-echo -e "Generating plot..."
-echo -e "set terminal png;\
-	 set size square;\
-	 set key off;\
-	 \
-	 set xlabel 'Time (seconds)';\
-	 set ylabel 'f(x)';\
-	 \
-	 set output 'img.png';\
-	 \
-	 set title 'Plot';\
-	 plot\
-	 '$tmp' using 1:2 with points pt 7 lc rgb 'blue';\
-	 \
-	 set terminal x11;\
-	 replot" | gnuplot --persist
-
-echo -e "Plot generated."
-rm $tmp
+if [ "$4" -eq 0 ]; then
+	./position.sh $prog $2 $3 $4
+elif [ "$4" -eq 1 ]; then
+	./energy.sh $prog $2 $3 $4
+fi
